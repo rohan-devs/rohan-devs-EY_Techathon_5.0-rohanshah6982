@@ -43,7 +43,7 @@ const Homepage = () => {
                 <CardTitle>Pending Tasks</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-2xl font-bold text-yellow-500">5</p>
+                <p className="text-2xl font-bold text-yellow-500">2</p>
               </CardContent>
             </Card>
           </Link>
@@ -170,7 +170,7 @@ const Homepage = () => {
                     </td>
                     <td className="px-4 py-2">
                       <Link href={"/sentimentAnalysis"}>
-                      <Button>Details</Button>
+                        <Button>Details</Button>
                       </Link>
                     </td>
                   </tr>
