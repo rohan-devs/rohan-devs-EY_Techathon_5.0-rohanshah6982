@@ -1,5 +1,5 @@
 # rohan-devs-EY_Techathon_5.0-rohanshah6982
-# Sentiment Analysis and Task Management Platform
+
 
 This project is a **Sentiment Analysis and Task Management Platform** designed to analyze customer sentiment and manage tasks efficiently. The platform includes features such as call details, sentiment analysis summaries, and a pending tasks management system.
 
@@ -53,9 +53,9 @@ This project is a **Sentiment Analysis and Task Management Platform** designed t
 ## **Technologies Used**
 - **Frontend**: React, Tailwind CSS, ShadCN UI
 - **Backend**: Node.js, Express.js
-- **Database**: PostgreSQL / MongoDB / Firebase Firestore
+- **Database**: Firebase Firestore
 - **Sentiment Analysis**: Gemini API
-- **Deployment**: Vercel (Frontend), Render/Heroku (Backend)
+- **Deployment**: Vercel (Frontend)
 
 ---
 

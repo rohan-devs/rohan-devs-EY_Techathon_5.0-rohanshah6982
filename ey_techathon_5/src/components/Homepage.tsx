@@ -1,10 +1,29 @@
+"use client";
 import React from "react";
+import { Badge } from "@/components/ui/badge";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+const data = [
+  { name: "Positive", value: 60 },
+  { name: "Neutral", value: 15 },
+  { name: "Negative", value: 25 },
+];
+
+const COLORS = ["#4CAF50", "#FFC107", "#F44336"]; // Colors for Positive, Neutral, Negative
+
 const Homepage = () => {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen w-full ">
       {/* Main Content */}
       <main className="container mx-auto py-8 px-6">
         {/* Overview Cards */}
@@ -19,9 +38,6 @@ const Homepage = () => {
           </Card>
 
           <Link href={"/tasks"}>
-
-
-
             <Card className=" hover:scale-110 transition-all">
               <CardHeader>
                 <CardTitle>Pending Tasks</CardTitle>
@@ -32,11 +48,13 @@ const Homepage = () => {
             </Card>
           </Link>
 
-      
           <Card className=" hover:scale-110 transition-all">
             <CardHeader>
-              <CardTitle>Sentiments</CardTitle>
+              <CardTitle>
+                Sentiments <Badge variant="outline">AI</Badge>
+              </CardTitle>
             </CardHeader>
+
             <CardContent>
               <div className="flex items-center space-x-2">
                 <span className="text-green-500 font-bold">60%</span>
@@ -57,8 +75,9 @@ const Homepage = () => {
 
         {/* Priority Section */}
         <div className="mb-8">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">
-            High-Priority Tasks/Calls
+          <h2 className="text-xl font-bold  mb-4">
+            High-Priority Tasks/Calls{" "}
+            <Badge variant="outline">Suggested using AI</Badge>
           </h2>
           <div className="space-y-4">
             <Card className="flex justify-between items-center">
@@ -66,7 +85,7 @@ const Homepage = () => {
                 <p className="text-lg font-semibold text-red-600">
                   Task 1 - Urgent
                 </p>
-                <p className="text-sm text-gray-500">Complete by: Today 5 PM</p>
+                <p className="text-sm ">Complete by: Today 5 PM</p>
               </div>
               <Button className="mr-4">View</Button>
             </Card>
@@ -76,7 +95,7 @@ const Homepage = () => {
                 <p className="text-lg font-semibold text-red-600">
                   Call with XYZ
                 </p>
-                <p className="text-sm text-gray-500">Scheduled at: 2 PM</p>
+                <p className="text-sm ">Scheduled at: 2 PM</p>
               </div>
               <Button className="mr-4">Details</Button>
             </Card>
@@ -90,6 +109,32 @@ const Homepage = () => {
             <CardHeader>
               <CardTitle>Sentiment Analysis</CardTitle>
             </CardHeader>
+
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={data}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label
+                  >
+                    {data.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </CardContent>
+
             <CardContent>
               {/* <PieChart
                 data={[
@@ -120,20 +165,24 @@ const Homepage = () => {
                   <tr>
                     <td className="px-4 py-2">XYZ</td>
                     <td className="px-4 py-2">2 PM</td>
-                    <td className="px-4 py-2 text-green-600">😊</td>
+                    <td className="px-4 py-2 text-green-600 items-center flex justify-center">
+                      😊
+                    </td>
                     <td className="px-4 py-2">
                       <Link href={"/sentimentAnalysis"}>
-                        <Button size="sm">Details</Button>
+                      <Button>Details</Button>
                       </Link>
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-2">ABC</td>
                     <td className="px-4 py-2">Tomorrow</td>
-                    <td className="px-4 py-2 text-yellow-600">😐</td>
+                    <td className="px-4 py-2 text-yellow-600 items-center flex justify-center">
+                      😐
+                    </td>
                     <td className="px-4 py-2">
                       <Link href={"/sentimentAnalysis"}>
-                        <Button size="sm">Details</Button>
+                        <Button>Details</Button>
                       </Link>
                     </td>
                   </tr>

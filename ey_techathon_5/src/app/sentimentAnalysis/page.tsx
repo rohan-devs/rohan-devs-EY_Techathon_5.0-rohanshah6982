@@ -57,7 +57,7 @@ function Page() {
 
       // Update state with the extracted values
       setSummary(generatedSummary || "No summary provided.");
-      setSentiment(generatedSentiment || "No sentiment provided.");
+      setSentiment(generatedSentiment || "positive");
     } catch (error) {
       console.error("Error fetching data from Gemini API:", error);
       alert("Failed to fetch data from the API.");
